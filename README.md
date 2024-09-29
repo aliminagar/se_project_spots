@@ -37,9 +37,10 @@ Mobile View:
 
 Video Presentation
 
-To better understand the project, you can watch a video walkthrough where the layout, features, and design decisions are explained in detail. This video is in production now.
+To better understand the project, you can watch a video walkthrough where the layout, features, and design decisions are explained in detail. Th elink to this video for everyone is: https://drive.google.com/file/d/1xuuJwMFrBjOVkAu8ofb1wCJR_7WPMJf2/view?usp=sharing.
 
 Watch the video on Loom once it is ready.
 GitHub Pages Link
-You can view the live project deployed on GitHub Pages using the following link:https://github.com/aliminagar/se_project_spots
+You can view the live project deployed on GitHub Pages using the following link:https://aliminagar.github.io/se_project_spots/
+
 Thank you

@@ -3,12 +3,10 @@
   padding: 10px 0;
   display: flex;
   justify-content: center;
-  margin-left: 113px; /* 113px on the left */
-  margin-right: 113px; /* 113px on the right */
   align-items: center;
 }
 
-header__logo {
+.header__logo {
   width: 94px;
   height: 26px;
 }

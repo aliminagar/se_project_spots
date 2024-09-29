@@ -4,6 +4,7 @@
   display: flex;
   justify-content: center;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
+  margin-top: auto; /* Ensure the footer sticks to the bottom */
 }
 
 .footer__copyright {

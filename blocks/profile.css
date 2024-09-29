@@ -8,7 +8,7 @@
   height: 190px;
   width: 190px;
   margin-right: 20px;
-  border-radius: 5%;
+  border-radius: 8px;
 }
 
 .profile__column {
@@ -58,10 +58,24 @@
   gap: 8px;
   cursor: pointer;
   opacity: 0.7;
+  transition: opacity 0.3s ease-in-out; /* Added transition for smooth hover effect */
 }
 
 .profile__edit-btn:hover {
   opacity: 1;
+}
+
+/* Add the before pseudo-element to show the pencil icon */
+.profile__edit-btn::before {
+  content: ""; /* Required to make the pseudo-element work */
+  width: 16px; /* Set the size of the icon */
+  height: 16px;
+  display: inline-block; /* Ensures the icon appears next to text */
+  background-image: url(../images/button-pencil.svg); /* Adjust the path as needed */
+  background-size: contain; /* Ensures the image fits perfectly */
+  background-repeat: no-repeat;
+  margin-right: 8px; /* Adds spacing between the icon and the text */
+  vertical-align: middle; /* Aligns the icon with the text */
 }
 
 .profile__add-btn {
@@ -71,7 +85,7 @@
   height: 52px;
   color: #fcf5e5;
   background-color: #212121;
-  border-radius: 10px;
+  border-radius: 8px;
   font-weight: 500;
   border: none;
   display: flex;
@@ -79,10 +93,12 @@
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Added transition for smooth hover effect */
 }
 
 .profile__add-btn:hover {
-  opacity: 0.8;
+  background-color: #333333; /* Slightly lighter background on hover */
+  opacity: 0.9; /* Adds a subtle transparency effect */
 }
 
 @media screen and (max-width: 627px) {
@@ -108,7 +124,6 @@
 
   .profile__description {
     margin: 0 0 32px;
-    font-size: 16px;
     max-width: 288px;
   }
 
