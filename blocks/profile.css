@@ -2,6 +2,7 @@
   display: flex;
   padding: 34px 0 20px;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
+  margin: o auto;
 }
 
 .profile__avatar {
@@ -14,7 +15,6 @@
 .profile__column {
   display: flex;
   flex-direction: column;
-  margin-right: 20px;
 }
 
 .profile__name {
@@ -71,10 +71,9 @@
   width: 16px; /* Set the size of the icon */
   height: 16px;
   display: inline-block; /* Ensures the icon appears next to text */
-  background-image: url(../images/button-pencil.svg); /* Adjust the path as needed */
+  background-image: url(../images/pencil-icon.svg); /* Adjust the path as needed */
   background-size: contain; /* Ensures the image fits perfectly */
-  background-repeat: no-repeat;
-  margin-right: 8px; /* Adds spacing between the icon and the text */
+  background-repeat: no-repeat; /* Adds spacing between the icon and the text */
   vertical-align: middle; /* Aligns the icon with the text */
 }
 
@@ -93,12 +92,11 @@
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  transition: opacity 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Added transition for smooth hover effect */
+  transition: opacity 0.3s ease-in-out; /* Only transition opacity */
 }
 
 .profile__add-btn:hover {
-  background-color: #333333; /* Slightly lighter background on hover */
-  opacity: 0.9; /* Adds a subtle transparency effect */
+  opacity: 0.8; /* Set opacity to 0.8 on hover */
 }
 
 @media screen and (max-width: 627px) {
@@ -109,33 +107,27 @@
     text-align: center;
     padding-top: 20px;
   }
-
   .profile__avatar {
     margin: 0 0 12px;
     height: 80px;
     width: 80px;
   }
-
   .profile__name {
     font-size: 20px;
     margin: 0 0 6px;
     max-width: 288px;
   }
-
   .profile__description {
     margin: 0 0 32px;
     max-width: 288px;
   }
-
   .profile__column {
     margin: 0 0 20px;
   }
-
   .profile__add-btn {
     margin: 0;
     width: 100%;
   }
-
   .profile__edit-btn {
     margin: auto;
   }
