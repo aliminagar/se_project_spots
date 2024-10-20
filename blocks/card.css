@@ -19,6 +19,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 12px;
+  position: relative; /* Make content positioned for absolute placement */
 }
 
 .card__title {
@@ -27,12 +28,14 @@
   font-weight: 500;
   line-height: 24px;
   margin-top: 0;
-  max-width: 353px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   margin-bottom: 0;
+  flex-grow: 1; /* Allow the title to expand */
+  padding-right: 40px; /* Reserve space for the heart icon */
 }
+
 .card__like-btn {
   background-image: url(../images/heart.svg);
   width: 23px;
@@ -40,6 +43,10 @@
   border: none;
   background-color: transparent;
   opacity: 40%;
+  position: absolute; /* Ensure heart stays in one spot */
+  right: 10px; /* Keep it aligned to the right */
+  top: 50%;
+  transform: translateY(-50%); /* Center it vertically */
 }
 .card__like-btn:hover {
   cursor: pointer;
@@ -48,12 +55,14 @@
 
 @media screen and (max-width: 627px) {
   .card__image {
-    height: 288px;
+    height: 318px;
+    width: 288px;
   }
-
+  .card {
+    width: 288px;
+  }
   .card__title {
     font-size: 16px;
-    line-height: 1;
-    margin-top: 0;
+    line-height: 16px;
   }
 }
