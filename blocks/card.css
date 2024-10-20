@@ -44,7 +44,7 @@
   background-color: transparent;
   opacity: 40%;
   position: absolute; /* Ensure heart stays in one spot */
-  right: 10px; /* Keep it aligned to the right */
+  right: 0px; /* Keep it aligned to the right */
   top: 50%;
   transform: translateY(-50%); /* Center it vertically */
 }
