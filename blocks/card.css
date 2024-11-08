@@ -4,6 +4,7 @@
   font-size: 20px;
   font-weight: 500;
   line-height: 24px;
+  position: relative;
 }
 
 .card__image {
@@ -43,10 +44,8 @@
   border: none;
   background-color: transparent;
   opacity: 40%;
-  position: absolute; /* Ensure heart stays in one spot */
-  right: 0px; /* Keep it aligned to the right */
-  top: 50%;
-  transform: translateY(-50%); /* Center it vertically */
+  flex-shrink: 0;
+  background-repeat: no-repeat;
 }
 .card__like-btn:hover {
   cursor: pointer;
@@ -63,21 +62,15 @@
 }
 
 .card__delete-button {
-  background-image: url(../images/delete-icon.svg);
-  background-color: transparent;
+  background: url(../images/delete-icon.svg);
   width: 32px;
   height: 32px;
   border: none;
-  cursor: pointer;
   position: absolute;
   top: 10px;
   right: 10px;
-  display: block;
-  z-index: 10;
-}
-
-.card {
-  position: relative; /* Ensures the button is positioned relative to the card */
+  cursor: pointer;
+  border-radius: 25px;
 }
 
 .card__delete-button:hover {

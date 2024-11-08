@@ -32,8 +32,12 @@
   border-radius: 12px;
 }
 
-.modal__content_type_preview {
+.modal__container_type_preview {
   position: relative;
+  background: transparent;
+  padding: 0px;
+  width: auto;
+  display: flex;
 }
 
 .modal__close-btn_type_preview {
@@ -45,12 +49,12 @@
   opacity: 1;
   position: absolute;
   top: 0px; /* Corrected to include 'px' */
-  right: -30px;
+  right: -45px;
   cursor: pointer;
 }
 
 .modal__image {
-  border-radius: 8px;
+  width: 100%;
   max-width: 80vw;
   max-height: 80vh;
   object-fit: contain;
@@ -59,7 +63,7 @@
 .modal__caption {
   background-color: #000;
   color: rgba(255, 255, 255, 1);
-  max-width: fit-content;
+  max-width: 100%;
   border-radius: 8px;
   padding: 4px 8px;
   font-size: 20px;
@@ -67,11 +71,16 @@
   line-height: 24px;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   margin: 8px 0 0;
+  position: absolute;
+  top: calc(100% + 8px);
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
 }
 
 .modal__close-btn {
-  background-color: rgba(255, 255, 255, 1);
-  background-image: url(../images/Group_27X.svg);
+  background-image: url(../images/Group\ 27.svg);
   background-position: center;
   border: none;
   height: 40px;
@@ -113,10 +122,6 @@
   color: #fff;
 }
 
-.card__delete-button {
-  display: none;
-}
-
 @media screen and (max-width: 627px) {
   .modal {
     padding: 0 10px;
@@ -130,9 +135,25 @@
     font-size: 20px;
     margin: 10px 0 34px;
   }
+
+  .modal__caption {
+    font-size: 16px;
+    width: auto; /* Adjusted to allow flexible width */
+    max-width: 100%; /* Ensure it fits within the container */
+    height: auto; /* Adjust to fit content */
+    background-color: #000; /* Retain background color */
+    padding: 4px 8px; /* Adjust for readability */
+  }
+
   .modal__close-btn {
     top: 12px;
     right: 12px;
+  }
+
+  .modal__close-btn_type_preview {
+    top: unset;
+    bottom: calc(100% + 8px);
+    right: 0;
   }
 
   .modal__label {

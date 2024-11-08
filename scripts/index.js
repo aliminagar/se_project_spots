@@ -95,13 +95,6 @@ function getCardElement(data) {
     cardElement.remove(); // Remove the card from the DOM
   }
 
-  cardImageEl.addEventListener("click", () => {
-    openModal(previewModal);
-    previewModalCaptionEl.textContent = data.name;
-    previewModalImageEl.src = data.link;
-    previewModalImageEl.alt = data.name;
-  });
-
   return cardElement;
 }
 
