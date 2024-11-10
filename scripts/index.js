@@ -47,28 +47,26 @@ const cardLinkInput = cardModal.querySelector("#add-card-link-input");
 const cardTemplate = document.querySelector("#card-template");
 const cardsList = document.querySelector(".cards__list");
 
+const previewModal = document.querySelector("#preview-modal");
+const previewModalImageEl = previewModal.querySelector(".modal__image");
+const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
+const modalElement = document.querySelectorAll(".modal");
+const previewModalCloseBtn = previewModal.querySelector(
+  ".modal__close-btn_type_preview"
+);
+// Attach event listener for the close button outside of the function
+previewModalCloseBtn.addEventListener("click", () => {
+  closeModal(previewModal); // Ensure this function is defined in your code
+});
 function getCardElement(data) {
   const cardElement = cardTemplate.content
     .querySelector(".card")
     .cloneNode(true);
-
   const cardNameEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardLikeBtn = cardElement.querySelector(".card__like-btn");
-  const cardDeleteButton = cardElement.querySelector(".card__delete-button"); // Select the delete button
-  //Todo- select the delete button
+  const cardDeleteButton = cardElement.querySelector(".card__delete-button");
 
-  const previewModal = document.querySelector("#preview-modal");
-  const previewModalImageEl = previewModal.querySelector(".modal__image");
-  const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
-  const modalElement = document.querySelectorAll(".modal");
-  const previewModalCloseBtn = previewModal.querySelector(
-    ".modal__close-btn_type_preview"
-  );
-
-  previewModalCloseBtn.addEventListener("click", () => {
-    closeModal(previewModal);
-  });
   // Image click event to open the preview modal
   cardImageEl.addEventListener("click", () => {
     openModal(previewModal);
@@ -104,7 +102,6 @@ function openModal(modal) {
 
   // Only populate fields if it's the edit modal
   if (modal === editModal) {
-    editModalNameInput.value = profileName.textContent;
     editModalDescriptionInput.value =
       profileDescription.textContent || "Civil Aviator";
   }
@@ -146,6 +143,7 @@ function handleAddFormSubmit(evt) {
 
 // Event listeners
 profileEditButton.addEventListener("click", () => {
+  editModalNameInput.value = profileName.textContent; // Moved here
   openModal(editModal);
 });
 editModalCloseBtn.addEventListener("click", () => {

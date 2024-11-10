@@ -27,7 +27,7 @@
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 500;
-  line-height: 24px;
+  line-height: 1.25;
   margin-top: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -87,6 +87,5 @@
   }
   .card__title {
     font-size: 16px;
-    line-height: 16px;
   }
 }

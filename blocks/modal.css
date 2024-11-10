@@ -1,16 +1,19 @@
 .modal {
+  font-family: Poppins, Arial, Helvetica, sans-serif;
   position: fixed;
   top: 0;
-  bottom: 0;
-  right: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 10px;
   visibility: hidden;
-  padding: 0 20px;
+  opacity: 0;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
 }
 
 .modal_opened {
@@ -63,7 +66,6 @@
 .modal__caption {
   background-color: #000;
   color: rgba(255, 255, 255, 1);
-  max-width: 100%;
   border-radius: 8px;
   padding: 4px 8px;
   font-size: 20px;
@@ -80,15 +82,20 @@
 }
 
 .modal__close-btn {
-  background-image: url(../images/Group\ 27.svg);
+  background-image: url(../images/modal_close-btn.svg);
   background-position: center;
   border: none;
   height: 40px;
   opacity: 40%;
   position: absolute;
-  right: -45px;
+  right: 0px;
   top: 0px;
   width: 40px;
+}
+
+.modal__close-btn:hover {
+  background-image: url(../images/modal_close-btn-hover.svg); /* Replace with your hover image */
+  opacity: 100%; /* Optional: changes the opacity on hover */
 }
 
 .modal__title {
@@ -139,7 +146,6 @@
   .modal__caption {
     font-size: 16px;
     width: auto; /* Adjusted to allow flexible width */
-    max-width: 100%; /* Ensure it fits within the container */
     height: auto; /* Adjust to fit content */
     background-color: #000; /* Retain background color */
     padding: 4px 8px; /* Adjust for readability */
@@ -151,9 +157,12 @@
   }
 
   .modal__close-btn_type_preview {
-    top: unset;
-    bottom: calc(100% + 8px);
-    right: 0;
+    background-image: url(../images/close-btn-liked.svg);
+    background-color: unset;
+    top: 0;
+    right: -52.5px;
+    width: 40px;
+    height: 40px;
   }
 
   .modal__label {
@@ -163,4 +172,45 @@
   .modal__submit-btn {
     width: 100%;
   }
+}
+@media screen and (max-width: 320px) {
+  .modal {
+    padding: 0 10px;
+  }
+
+  .modal__container {
+    width: 100%; /* Ensure it spans the width of the screen */
+    padding: 8px 12px; /* Adjust padding for better fit */
+    position: relative; /* Ensure the close button is positioned relative to this */
+  }
+
+  .modal__close-btn_type_preview {
+    position: absolute; /* Ensure it can be positioned within the container */
+    top: -40px; /* Move the button above the image */
+    right: 12px; /* Adjust this value as needed */
+    width: 32px; /* Resize for better fit */
+    height: 32px; /* Resize for better fit */
+    z-index: 10; /* Ensure it stays above other elements */
+    background-image: url("../images/close-btn-light.svg"); /* Ensure the image is correct */
+    background-size: cover; /* Make sure the image fits the button */
+    background-repeat: no-repeat; /* Prevent repeated background */
+    background-position: center; /* Center the background */
+    opacity: 1; /* Ensure full visibility */
+  }
+}
+
+.modal__caption {
+  font-size: 16px; /* Adjust font size for readability */
+  line-height: 19.2px; /* Adjust line height */
+  color: #ffffff; /* Ensure it contrasts well */
+  white-space: normal; /* Allow text to wrap */
+  overflow: visible; /* Ensure no text is hidden */
+  padding: 4px 0; /* Minimal padding */
+}
+
+/* Adjust the modal image */
+.modal__image {
+  width: 100%; /* Ensure it fits within the screen */
+  max-width: unset;
+  height: auto; /* Keep aspect ratio */
 }
