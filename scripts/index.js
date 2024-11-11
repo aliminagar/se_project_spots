@@ -24,6 +24,10 @@ const initialCards = [
     name: "Mountain house",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
+  {
+    name: "Golden Gate Bridge",
+    link: "http://127.0.0.1:5501/images/pexels-griffin-wooldridge-4953434 1.png",
+  },
 ];
 
 // Selecting elements
@@ -99,7 +103,6 @@ function getCardElement(data) {
 // Function to open the modal and populate the fields
 function openModal(modal) {
   modal.classList.add("modal_opened");
-
   // Only populate fields if it's the edit modal
   if (modal === editModal) {
     editModalDescriptionInput.value =
@@ -143,9 +146,11 @@ function handleAddFormSubmit(evt) {
 
 // Event listeners
 profileEditButton.addEventListener("click", () => {
-  editModalNameInput.value = profileName.textContent; // Moved here
+  editModalNameInput.value = profileName.textContent;
+  editModalDescriptionInput.value = profileDescription.textContent; // Moved here
   openModal(editModal);
 });
+
 editModalCloseBtn.addEventListener("click", () => {
   closeModal(editModal);
 });

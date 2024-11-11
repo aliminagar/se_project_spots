@@ -24,15 +24,36 @@
 }
 
 .modal__container {
-  background: #fff;
+  background-color: #fff;
+  padding: 32px 50px;
   max-width: 730px;
   width: 100%;
-  padding: 32px 50px;
-  position: relative;
-  margin: auto;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  border-radius: 12px;
+  position: relative;
+  border-radius: 8px;
+}
+
+.modal__image {
+  width: 100%;
+  max-width: 80vw;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.modal__close-btn {
+  background-image: url(../images/Property\ 1=Light-one.svg);
+  background-color: transparent;
+  border: none;
+  height: 40px;
+  opacity: 40%;
+  position: absolute;
+  right: 50px;
+  top: 32px;
+  width: 40px;
+}
+
+.modal__close-btn:hover {
+  opacity: 100%; /* Optional: changes the opacity on hover */
 }
 
 .modal__container_type_preview {
@@ -44,7 +65,7 @@
 }
 
 .modal__close-btn_type_preview {
-  background-image: url("../images/close-btn-light.svg");
+  background-image: url(../images/Property\ 1=Dark-one.svg);
   width: 40px;
   height: 40px;
   background-color: transparent;
@@ -56,13 +77,9 @@
   cursor: pointer;
 }
 
-.modal__image {
-  width: 100%;
-  max-width: 80vw;
-  max-height: 80vh;
-  object-fit: contain;
+.modal__close-btn_type_preview:hover {
+  opacity: 40%;
 }
-
 .modal__caption {
   background-color: #000;
   color: rgba(255, 255, 255, 1);
@@ -72,30 +89,13 @@
   font-weight: 500;
   line-height: 24px;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
-  margin: 8px 0 0;
+  margin: 0;
   position: absolute;
   top: calc(100% + 8px);
   white-space: nowrap;
   overflow: hidden;
   box-sizing: border-box;
   text-overflow: ellipsis;
-}
-
-.modal__close-btn {
-  background-image: url(../images/modal_close-btn.svg);
-  background-position: center;
-  border: none;
-  height: 40px;
-  opacity: 40%;
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  width: 40px;
-}
-
-.modal__close-btn:hover {
-  background-image: url(../images/modal_close-btn-hover.svg); /* Replace with your hover image */
-  opacity: 100%; /* Optional: changes the opacity on hover */
 }
 
 .modal__title {
@@ -138,31 +138,16 @@
     padding: 12px;
   }
 
+  .modal__container_type_preview {
+    padding: 0;
+  }
+  .modal__close-btn {
+    top: 12px;
+  }
+
   .modal__title {
     font-size: 20px;
     margin: 10px 0 34px;
-  }
-
-  .modal__caption {
-    font-size: 16px;
-    width: auto; /* Adjusted to allow flexible width */
-    height: auto; /* Adjust to fit content */
-    background-color: #000; /* Retain background color */
-    padding: 4px 8px; /* Adjust for readability */
-  }
-
-  .modal__close-btn {
-    top: 12px;
-    right: 12px;
-  }
-
-  .modal__close-btn_type_preview {
-    background-image: url(../images/close-btn-liked.svg);
-    background-color: unset;
-    top: 0;
-    right: -52.5px;
-    width: 40px;
-    height: 40px;
   }
 
   .modal__label {
@@ -172,45 +157,19 @@
   .modal__submit-btn {
     width: 100%;
   }
-}
-@media screen and (max-width: 320px) {
-  .modal {
-    padding: 0 10px;
-  }
-
-  .modal__container {
-    width: 100%; /* Ensure it spans the width of the screen */
-    padding: 8px 12px; /* Adjust padding for better fit */
-    position: relative; /* Ensure the close button is positioned relative to this */
-  }
 
   .modal__close-btn_type_preview {
-    position: absolute; /* Ensure it can be positioned within the container */
-    top: -40px; /* Move the button above the image */
-    right: 12px; /* Adjust this value as needed */
-    width: 32px; /* Resize for better fit */
-    height: 32px; /* Resize for better fit */
-    z-index: 10; /* Ensure it stays above other elements */
-    background-image: url("../images/close-btn-light.svg"); /* Ensure the image is correct */
-    background-size: cover; /* Make sure the image fits the button */
-    background-repeat: no-repeat; /* Prevent repeated background */
-    background-position: center; /* Center the background */
-    opacity: 1; /* Ensure full visibility */
+    top: -48px;
+    right: 0px;
   }
-}
 
-.modal__caption {
-  font-size: 16px; /* Adjust font size for readability */
-  line-height: 19.2px; /* Adjust line height */
-  color: #ffffff; /* Ensure it contrasts well */
-  white-space: normal; /* Allow text to wrap */
-  overflow: visible; /* Ensure no text is hidden */
-  padding: 4px 0; /* Minimal padding */
-}
+  .modal__image {
+    border-radius: 4px;
+    max-width: 288px;
+  }
 
-/* Adjust the modal image */
-.modal__image {
-  width: 100%; /* Ensure it fits within the screen */
-  max-width: unset;
-  height: auto; /* Keep aspect ratio */
+  .modal__caption {
+    font-size: 16px;
+    line-height: 19.2px;
+  }
 }
