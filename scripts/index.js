@@ -103,11 +103,6 @@ function getCardElement(data) {
 // Function to open the modal and populate the fields
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  // Only populate fields if it's the edit modal
-  if (modal === editModal) {
-    editModalDescriptionInput.value =
-      profileDescription.textContent || "Civil Aviator";
-  }
 }
 
 // Function to close the modal
