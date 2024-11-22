@@ -28,16 +28,20 @@ const initialCards = [
     name: "Golden Gate Bridge",
     link: "http://127.0.0.1:5501/images/pexels-griffin-wooldridge-4953434 1.png",
   },
+
+  {
+    name: "Mint Plant", // A descriptive name for the image
+    link: "https://images.unsplash.com/photo-1731921954767-8473de81c99e?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
 ];
 
-// Selecting elements
 const profileEditButton = document.querySelector(".profile__edit-btn");
 const cardModalButton = document.querySelector(".profile__add-btn");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 
 const editModal = document.querySelector("#edit-modal");
-const editFormelement = editModal.querySelector(".modal__form");
+const editFormElement = editModal.querySelector(".modal__form");
 const editModalCloseBtn = editModal.querySelector(".modal__close-btn");
 const editModalNameInput = editModal.querySelector("#profile-name-input");
 const editModalDescriptionInput = editModal.querySelector(
@@ -54,7 +58,7 @@ const cardsList = document.querySelector(".cards__list");
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageEl = previewModal.querySelector(".modal__image");
 const previewModalCaptionEl = previewModal.querySelector(".modal__caption");
-const modalElement = document.querySelectorAll(".modal");
+const modalElements = document.querySelectorAll(".modal");
 const previewModalCloseBtn = previewModal.querySelector(
   ".modal__close-btn_type_preview"
 );
@@ -81,17 +85,12 @@ function getCardElement(data) {
 
   // Assign name to the title
   cardNameEl.textContent = data.name;
-
-  // Assign values to the image src and alt attributes
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
+
   cardLikeBtn.addEventListener("click", () => {
     cardLikeBtn.classList.toggle("card__like-btn_liked");
   });
-
-  //todo: set the listener on delete button
-  //The handler should remove the card from the DOM
-  // Add event listener for the delete button
   cardDeleteButton.addEventListener("click", handleDeleteCard);
   function handleDeleteCard(evt) {
     cardElement.remove(); // Remove the card from the DOM
@@ -100,14 +99,21 @@ function getCardElement(data) {
   return cardElement;
 }
 
-// Function to open the modal and populate the fields
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keyup", closeModalOnEsc);
 }
 
-// Function to close the modal
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keyup", closeModalOnEsc);
+}
+
+function closeModalOnEsc(evt) {
+  if (evt.key === "Escape") {
+    const activeModal = document.querySelector(".modal_opened");
+    closeModal(activeModal);
+  }
 }
 
 // Function to handle form submission and update profile fields
@@ -126,23 +132,17 @@ function handleAddFormSubmit(evt) {
     link: cardLinkInput.value,
   };
 
-  // Create a new card element using the provided data
   const cardElement = getCardElement(inputValues);
-
-  // Add the new card element to the top of the card list
   cardsList.prepend(cardElement);
-
-  // Reset the form inputs after submission
   evt.target.reset();
-
-  // Close the modal after the card is added
+  disableButton(cardSubmitBtn, settings);
   closeModal(cardModal);
 }
 
-// Event listeners
 profileEditButton.addEventListener("click", () => {
   editModalNameInput.value = profileName.textContent;
-  editModalDescriptionInput.value = profileDescription.textContent; // Moved here
+  editModalDescriptionInput.value = profileDescription.textContent;
+  resetValidation(editFormElement, settings);
   openModal(editModal);
 });
 
@@ -157,8 +157,17 @@ cardModalCloseBtn.addEventListener("click", () => {
   closeModal(cardModal);
 });
 
-editFormelement.addEventListener("submit", handleEditFormSubmit);
-cardForm.addEventListener("submit", handleAddFormSubmit); // Corrected event listener
+editFormElement.addEventListener("submit", handleEditFormSubmit);
+
+cardForm.addEventListener("submit", handleAddFormSubmit);
+
+modalElements.forEach((modalElements) => {
+  modalElements.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("modal")) {
+      closeModal(modalElements);
+    }
+  });
+});
 
 // Render initial cards
 initialCards.forEach((item) => {
