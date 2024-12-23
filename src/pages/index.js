@@ -1,3 +1,9 @@
+import {
+  enableValidation,
+  settings,
+  resetValidation,
+} from "../scripts/validation.js";
+import "./index.css";
 // Array of initial cards
 const initialCards = [
   {
@@ -23,10 +29,6 @@ const initialCards = [
   {
     name: "Mountain house",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
-  },
-  {
-    name: "Golden Gate Bridge",
-    link: "http://127.0.0.1:5501/images/pexels-griffin-wooldridge-4953434 1.png",
   },
 
   {
@@ -175,3 +177,4 @@ initialCards.forEach((item) => {
   const cardEl = getCardElement(item);
   cardsList.append(cardEl);
 });
+enableValidation(settings);
