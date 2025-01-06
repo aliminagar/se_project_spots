@@ -14,6 +14,7 @@
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  z-index: 1000; /* Ensure the modal is on top of other elements */
 }
 
 .modal_opened {
@@ -21,6 +22,7 @@
   opacity: 1;
   transition-delay: 0s;
   transition: opacity 0.5s linear;
+  z-index: 1000; /* Ensure the modal is on top of other elements */
 }
 
 .modal__container {
@@ -33,30 +35,6 @@
   border-radius: 8px;
 }
 
-.modal__image {
-  width: 100%;
-  max-width: 80vw;
-  max-height: 80vh;
-  object-fit: contain;
-}
-
-.modal__close-btn {
-  background-image: url(../images/Property\ 1=Light-one.svg);
-  background-color: transparent;
-  border: none;
-  height: 40px;
-  opacity: 40%;
-  position: absolute;
-  right: 50px;
-  top: 30px;
-  width: 40px;
-  cursor: pointer;
-}
-
-.modal__close-btn:hover {
-  opacity: 100%; /* Optional: changes the opacity on hover */
-}
-
 .modal__container_type_preview {
   position: relative;
   background: transparent;
@@ -65,22 +43,13 @@
   display: flex;
 }
 
-.modal__close-btn_type_preview {
-  background-image: url(../images/Property\ 1=Dark-one.svg);
-  width: 40px;
-  height: 40px;
-  background-color: transparent;
-  border: none;
-  opacity: 1;
-  position: absolute;
-  top: 0px; /* Corrected to include 'px' */
-  right: -45px;
-  cursor: pointer;
+.modal__image {
+  width: 100%;
+  max-width: 80vw;
+  max-height: 80vh;
+  object-fit: contain;
 }
 
-.modal__close-btn_type_preview:hover {
-  opacity: 40%;
-}
 .modal__caption {
   background-color: #000;
   color: rgba(255, 255, 255, 1);
@@ -99,14 +68,85 @@
   text-overflow: ellipsis;
 }
 
+.modal__form_type_delete {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Add spacing between buttons */
+}
+
+.modal__close-btn {
+  position: absolute;
+  top: 32px;
+  right: 50px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.modal__close-btn:hover {
+  opacity: 1; /* Full opacity on hover */
+}
+
+.modal__close_type_delete {
+  top: 0;
+  right: -52.5px;
+  opacity: 1;
+  color: #fff;
+}
+.modal__close-btn_type_preview {
+  background-image: url(../images/Property\ 1=Dark-one.svg);
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  opacity: 1;
+  position: absolute;
+  top: 0px; /* Corrected to include 'px' */
+  right: -45px;
+  cursor: pointer;
+}
+
+.modal__close-btn_type_preview:hover {
+  opacity: 40%;
+}
+
+#delete-modal .modal__close-button {
+  position: absolute;
+  top: 0; /* Fine-tune the vertical position */
+  right: -52px; /* Fine-tune the horizontal position */
+  z-index: 10; /* Ensure it appears above all other elements */
+  background-color: transparent; /* Match the background to the modal */
+  border: none; /* Remove border for a cleaner look */
+  width: 40px; /* Set appropriate width */
+  height: 40px; /* Set appropriate height */
+  cursor: pointer; /* Change cursor to pointer */
+  background-image: url(../images/close-icon.svg); /* Replace with your X icon's path */
+  background-repeat: no-repeat; /* Ensure the icon doesn't repeat */
+  background-size: contain; /* Make sure the icon scales properly */
+  opacity: 0.8; /* Slight transparency for a modern look */
+}
+
+#delete-modal .modal__close-button:hover {
+  opacity: 1; /* Increase opacity on hover */
+  transform: scale(1.1); /* Slightly enlarge the button on hover for effect */
+}
+
 .modal__title {
+  text-align: center;
   font-weight: 500;
-  font-size: 32px;
-  line-height: 32px;
-  color: rgba(33, 33, 33, 1);
-  margin: 0 0 32px;
-  font-family: "Poppins", Arial, Helvetica, sans-serif;
-  font-style: normal;
+  font-size: 24px;
+  margin-bottom: 32px;
+}
+
+.modal__title_type_delete {
+  max-width: 590px;
+  width: 100%;
+  font-size: 24px;
+  line-height: 1;
+  text-align: center;
 }
 
 .modal__label {
@@ -143,7 +183,7 @@
   margin-top: 8px;
 }
 
-.modal__submit-btn {
+.modal__submit-button {
   width: 156px;
   font-size: 16px;
   height: 52px;
@@ -152,11 +192,37 @@
   color: rgba(252, 245, 229, 1);
 }
 
-.modal__submit-btn_disabled {
+.modal__submit-button_disabled {
   background-color: rgba(33, 33, 33, 1);
   opacity: 50%;
 }
 
+.modal__submit-delete,
+.modal__submit-cancel {
+  width: 156px; /* Ensure consistent width */
+  padding: 16px 0; /* Adjust padding for better appearance */
+  border-radius: 8px; /* Consistent border radius */
+}
+
+.modal__submit-delete {
+  background-color: #ff6565;
+  color: #212121;
+  border: none;
+}
+
+.modal__submit-delete:hover {
+  background-color: #ff3333;
+}
+
+.modal__submit-cancel {
+  background-color: #fff;
+  color: #212121;
+}
+
+.modal__submit-cancel:hover {
+  background-color: #212121;
+  color: #fff;
+}
 @media screen and (max-width: 627px) {
   .modal {
     padding: 0 10px;
@@ -167,42 +233,34 @@
   }
 
   .modal__container_type_preview {
-    padding: 0;
-  }
-  .modal__close-btn {
-    top: 12px;
+    max-width: none;
+    max-height: none;
+    width: 100%;
   }
 
   .modal__title {
+    font-weight: 500;
     font-size: 20px;
+    line-height: 1;
+    margin-bottom: 24px;
     margin: 10px 0 34px;
+  }
+
+  .modal__close-button {
+    top: 12px;
+    right: 12px;
+  }
+
+  .modal__close-button_type_preview {
+    top: -45.49px;
+    right: 2px;
   }
 
   .modal__label {
     margin-bottom: 24px;
   }
 
-  .modal__submit-btn {
+  .modal__submit-button {
     width: 100%;
-  }
-
-  .modal__close-btn_type_preview {
-    top: -48px;
-    right: 0px;
-  }
-
-  .modal__image {
-    border-radius: 4px;
-    max-width: 288px;
-  }
-
-  .modal__caption {
-    font-size: 16px;
-    line-height: 19.2px;
-  }
-}
-@media screen and (max-width: 320px) {
-  .modal__close-btn {
-    left: 240px;
   }
 }

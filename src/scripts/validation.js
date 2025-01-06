@@ -1,10 +1,10 @@
 export const settings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__submit-btn",
-  inactiveButtonClass: "modal__submit-btn_disabled",
+  submitButtonSelector: ".modal__submit-button",
+  inactiveButtonClass: "modal__submit-button-disabled",
   inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
+  errorClass: "modal__error",
 };
 
 const showInputError = (formElement, inputElement, config) => {
@@ -36,6 +36,13 @@ const hasInvalidInput = (inputList) => {
 };
 
 const toggleButtonState = (inputList, buttonElement, config) => {
+  if (!buttonElement) {
+    console.error(
+      "Button element is null! Check your query selector or DOM structure."
+    );
+    return;
+  }
+
   if (hasInvalidInput(inputList)) {
     disableButton(buttonElement, config);
   } else {
@@ -48,7 +55,7 @@ const enableButton = (buttonElement, config) => {
   buttonElement.classList.remove(config.inactiveButtonClass);
 };
 
-const disableButton = (buttonElement, config) => {
+export const disableButton = (buttonElement, config) => {
   buttonElement.disabled = true;
   buttonElement.classList.add(config.inactiveButtonClass);
 };
@@ -68,6 +75,17 @@ const setEventListeners = (formElement, config) => {
   );
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
 
+  console.log("Form element:", formElement);
+  console.log("Input list:", inputList);
+  console.log("Button element:", buttonElement);
+
+  if (!buttonElement) {
+    console.error(
+      "Button element not found! Check the selector or DOM structure."
+    );
+    return;
+  }
+
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(formElement, inputElement, config);
@@ -81,3 +99,4 @@ export const enableValidation = (config) => {
     setEventListeners(formElement, config);
   });
 };
+enableValidation(settings);
