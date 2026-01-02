@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "core-js": "3.23.5",
+    "qs": "^6.14.1",
     "se_project_spots": "file:"
   }
 }
