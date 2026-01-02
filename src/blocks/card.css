@@ -78,14 +78,21 @@
 }
 
 @media screen and (max-width: 627px) {
-  .card__image {
-    height: 318px;
-    width: 288px;
-  }
   .card {
-    width: 288px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
   }
+
+  .card__image {
+    height: 288px;
+    margin-bottom: 12px;
+  }
+
   .card__title {
+    max-width: 260px;
     font-size: 16px;
+    padding-top: 0;
+    margin-top: auto;
   }
 }
